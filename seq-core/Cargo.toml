@@ -1,0 +1,19 @@
+[package]
+name = "seq-core"
+version = "0.1.0"
+edition = "2021"
+description = "seq_manip's Rust, compiled from the live checkout unchanged, without Tauri, plus a session layer."
+publish = false
+
+# Same as sequence_manipulator/src-tauri, minus tauri and its plugins.
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sequitur = { path = "../../sequitur", features = ["serde", "trash"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "tiff", "gif", "bmp", "webp"] }
+exr = "1.74"
+base64 = "0.22"
+dunce = "1"
+
+[target.'cfg(unix)'.dependencies]
+uzers = "0.12"

@@ -1,0 +1,22 @@
+[package]
+name = "seq"
+version = "0.1.0"
+edition = "2021"
+description = "seq_manip on imfram: a native window over the same core."
+publish = false
+
+[[bin]]
+name = "seq_manip"
+path = "src/main.rs"
+
+[dependencies]
+seq-core = { path = "../seq-core" }
+imfram = { path = "../../imfram" }
+egui = "0.36"
+wgpu = "30"
+winit = "0.30"
+log = "0.4"
+env_logger = "0.11"
+serde = { version = "1", features = ["derive"] }
+base64 = "0.22"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
