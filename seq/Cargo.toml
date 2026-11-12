@@ -5,6 +5,10 @@ edition = "2021"
 description = "seq_manip on imfram: a native window over the same core."
 publish = false
 
+[lib]
+name = "seq"
+path = "src/lib.rs"
+
 [[bin]]
 name = "seq_manip"
 path = "src/main.rs"

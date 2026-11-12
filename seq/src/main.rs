@@ -5,20 +5,7 @@
 //! `cargo run -p seq -- --shot DIR`        render once offscreen to DIR/main.png
 //! `cargo run -p seq -- --shot DIR --play NAME` the same with NAME playing ("" = first sequence)
 
-mod app;
-mod browser;
-mod export;
-mod jobs;
-mod keys;
-mod logic;
-mod menus;
-mod model;
-mod nuke;
-mod panels;
-mod player;
-mod prefs;
-mod thumbs;
-mod verbs;
+use seq::{app, model, prefs};
 
 use std::path::PathBuf;
 use std::time::{Duration, Instant};

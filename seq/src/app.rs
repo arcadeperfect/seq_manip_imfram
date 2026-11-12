@@ -157,6 +157,11 @@ pub struct Seq {
     prefs_dirty: bool,
     /// Offscreen shots: nothing is written to the prefs.
     pub keep_prefs: bool,
+    /// Embedded in a host (Edify): activated media goes to `opened` rather
+    /// than to this app's player.
+    pub embedded: bool,
+    /// Media paths activated while embedded, for the host to take.
+    pub opened: Vec<PathBuf>,
 }
 
 impl Seq {
@@ -198,6 +203,8 @@ impl Seq {
             quit: false,
             prefs_dirty: false,
             keep_prefs: false,
+            embedded: false,
+            opened: Vec::new(),
             prefs,
         };
         s.go(&start);
@@ -515,6 +522,10 @@ impl Seq {
     pub fn play(&mut self, id: EntityId) {
         let Some(r) = self.row(id).cloned() else { return };
         if !matches!(r.kind, Kind::Sequence | Kind::File) || r.life == Life::New {
+            return;
+        }
+        if self.embedded {
+            self.opened.extend(crate::media_path(&r));
             return;
         }
         self.player.open(&r, self.prefs.color());
