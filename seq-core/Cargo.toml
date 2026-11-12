@@ -14,6 +14,8 @@ image = { version = "0.25", default-features = false, features = ["png", "jpeg",
 exr = "1.74"
 base64 = "0.22"
 dunce = "1"
+tauri = { path = "../tauri-shim", package = "tauri-shim" }
+tokio = { version = "1", features = ["macros", "sync"] }
 
 [target.'cfg(unix)'.dependencies]
 uzers = "0.12"

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["seq-core", "seq"]
+members = ["seq-core", "seq", "tauri-shim", "tauri-shim-macros"]
 
 # Fast edit-run loop: our crates build lean, dependencies optimised once.
 [profile.dev]

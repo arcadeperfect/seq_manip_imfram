@@ -1,0 +1,14 @@
+[package]
+name = "tauri-shim"
+version = "0.1.0"
+edition = "2021"
+description = "The few pieces of Tauri that seq_manip's commands.rs names, so it compiles unchanged in a native app."
+publish = false
+
+[lib]
+name = "tauri"
+
+[dependencies]
+tauri-shim-macros = { path = "../tauri-shim-macros" }
+tokio = { version = "1", features = ["sync"] }
+pollster = "0.4"
