@@ -623,8 +623,9 @@ fn header(ui: &mut Ui, app: &mut Seq) {
         let Some(m) = &p.media else { return };
         ui.strong(&m.name);
         ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
-            if ui.button("×").on_hover_text("close (Esc)").clicked() {
+            if ui.button("×").on_hover_text("close and go back to the browser (Esc)").clicked() {
                 p.close();
+                app.dock_asks.push(crate::app::DockAsk::Show(crate::app::Tab::Browser));
                 return;
             }
             if ui.selectable_label(p.info, "Info").on_hover_text("I").clicked() {
@@ -789,6 +790,13 @@ fn info_overlay(ui: &mut Ui, app: &mut Seq, view: Rect) {
     });
 }
 
+/// Stop, and show the browser where the player was.
+fn back_to_browser(app: &mut Seq) {
+    app.player.close();
+    app.player.has_keys = false;
+    app.dock_asks.push(crate::app::DockAsk::Show(crate::app::Tab::Browser));
+}
+
 fn keys(ui: &mut Ui, app: &mut Seq) {
     let p = &mut app.player;
     if !p.has_keys {
@@ -799,7 +807,7 @@ fn keys(ui: &mut Ui, app: &mut Seq) {
         if p.info {
             p.info = false;
         } else {
-            p.close();
+            back_to_browser(app);
             return;
         }
     }
