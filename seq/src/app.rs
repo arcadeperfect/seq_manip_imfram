@@ -463,7 +463,7 @@ impl Seq {
             }
         }
         if n > 0 {
-            self.info_toast(format!("{n} added to the bin"));
+            self.info_toast(if self.embedded { format!("{n} added to import") } else { format!("{n} added to the bin") });
             self.dock_asks.push(DockAsk::Show(Tab::Bin));
         }
         self.refresh_side();

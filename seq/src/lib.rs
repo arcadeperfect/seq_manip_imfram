@@ -6,6 +6,7 @@
 
 pub mod app;
 pub mod browser;
+pub mod embed;
 pub mod export;
 pub mod jobs;
 pub mod keys;

@@ -70,6 +70,12 @@ pub struct Prefs {
     pub zoom: f32,
     pub light: bool,
     pub last_dir: Option<PathBuf>,
+    /// Embedded (a host app's load window): the folders sidebar's and the
+    /// info side's widths, and the info side's page.
+    pub embed_side: f32,
+    pub embed_info: f32,
+    pub embed_page: u8,
+    pub embed_tray: f32,
     // one-time notices
     pub warned_instant: bool,
     pub warned_commit: bool,
@@ -96,6 +102,10 @@ impl Default for Prefs {
             zoom: 1.0,
             light: false,
             last_dir: None,
+            embed_side: 210.0,
+            embed_info: 260.0,
+            embed_page: 0,
+            embed_tray: 260.0,
             warned_instant: false,
             warned_commit: false,
             warned_delete: false,
